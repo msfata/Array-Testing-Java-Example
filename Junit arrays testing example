@@ -1,0 +1,29 @@
+package com.first;
+/*
+*msfata programminghelp
+*/
+import static org.junit.Assert.assertArrayEquals;
+
+import org.junit.Test;
+
+public class AddToArray {
+	public static int[] addToArray(int[] array, int addNumber) {
+		String arrayToString = "";
+		for (int index : array) {
+			arrayToString += index;
+		}
+
+		int addToString = Integer.parseInt(arrayToString) + addNumber;
+		arrayToString = String.valueOf(addToString);
+		array = new int[arrayToString.length()];
+		for (int index = 0; index < array.length; index++) {
+			array[index] = Character.digit(arrayToString.charAt(index), 10);
+		}
+		return array;
+	}
+
+	@Test
+	public void test() {
+		assertArrayEquals(AddToArray.addToArray(new int[] { 1, 2, 9, 9 }, 11), new int[] { 1, 3, 1, 0 });
+	}
+}
